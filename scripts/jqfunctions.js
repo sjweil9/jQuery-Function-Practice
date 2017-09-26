@@ -66,7 +66,7 @@ $(document).ready(function(){
         $(this).text(newmessage);
     })
 
-    //submit to make some text appear after form
+    //submit to make some text appear after or before form
     $('#message').click(function() {
         var message = $(this).siblings().val();
         var pmessage = "<p>" + message + "</p>";
@@ -77,5 +77,10 @@ $(document).ready(function(){
         else {
             $(this).parent().before(pmessage);
         }
+    });
+
+    //make forms stop being annoying
+    $('form').submit(function() {
+        return false;
     });
 });
