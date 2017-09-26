@@ -77,10 +77,16 @@ $(document).ready(function(){
         else {
             $(this).parent().before(pmessage);
         }
+        $('#data').data('message', message);
     });
 
     //make forms stop being annoying
     $('form').submit(function() {
         return false;
+    });
+
+    //get data
+    $('#data').click(function() {
+        alert($(this).data('message'));
     });
 });
