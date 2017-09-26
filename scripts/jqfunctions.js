@@ -1,14 +1,12 @@
 $(document).ready(function(){
     // functions below to create random background color gradients for button
     
-    /*function getRandomRGB() {
+    function getRandomRGB() {
         return "rgb(" + String(Math.floor(Math.random()*256)) + ", " + String(Math.floor(Math.random()*256)) + ", " + String(Math.floor(Math.random()*256)) + ")";
-    };*/
+    };
     $('#rbg').click(function() {
-        var col1 = "rgb(" + String(Math.floor(Math.random()*256)) + ", " + String(Math.floor(Math.random()*256)) + ", " + String(Math.floor(Math.random()*256)) + ")";
-        var col2 = "rgb(" + String(Math.floor(Math.random()*256)) + ", " + String(Math.floor(Math.random()*256)) + ", " + String(Math.floor(Math.random()*256)) + ")";
-        var bgcol = "linear-gradient(to bottom, " + col1 + ", " + col2 + ")";
-        $(this).css('background:', bgcol);
+        var bgcol = "linear-gradient(to bottom, " + getRandomRGB() + ", " + getRandomRGB() + ")";
+        $('#rbg').css('background', bgcol);
     });
 
     //functions to make info slide down
@@ -38,7 +36,7 @@ $(document).ready(function(){
 
     //center text (adding class)
     $('#cnt').click(function() {
-        $('#cnt').addClass('lefttext');
+        $('#cnt').toggleClass('lefttext');
     });
 
     //hover animations for links
@@ -50,7 +48,34 @@ $(document).ready(function(){
     });
 
     //append!
-    /*$('apnd').click(function() {
-        $(this).parent().append("<p>Where did I come from?</p>");
-    });*/
+    $('#apnd').click(function() {
+        $(this).append("<p>Where did I come from?</p>");
+    });
+
+    //change entirely!
+    $('#change').click(function() {
+        $(this).html('<img src="images/surprise.jpg">');
+    });
+
+    //fun w text
+    $('#text').click(function() {
+        var colors = ['red', 'green', 'blue', 'cyan', 'black', 'white', 'gray', 'purple'];
+        var picked = Math.floor(Math.random()*8);
+        var newmessage = "My Text Is: " + colors[picked];
+        $(this).css('color', colors[picked]);
+        $(this).text(newmessage);
+    })
+
+    //submit to make some text appear after form
+    $('#message').click(function() {
+        var message = $(this).siblings().val();
+        var pmessage = "<p>" + message + "</p>";
+        var updown = confirm("Do you want to print message BELOW the form? (Cancel will put it BEFORE)");
+        if (updown == true) {
+            $(this).parent().after(pmessage);            
+        }
+        else {
+            $(this).parent().before(pmessage);
+        }
+    });
 });

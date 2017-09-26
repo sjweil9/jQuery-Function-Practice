@@ -69,11 +69,11 @@ ul {
             text-decoration: underline;
             font-size: 16px;
         }
-    #wrapper > div:last-child{
+    #wrapper > div#right{
         width: 175px;
         text-align: center;
     }
-        #wrapper > div:last-child img{
+        #wrapper > div#right img{
             max-width: 100%;
             height: auto;
             border: 1px solid black;
